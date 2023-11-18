@@ -1,19 +1,14 @@
 const http = require('http')
-const fs = require('fs')
-const path = require('path')
-
-const getUser = () => {
-    const filePath = path.join(__dirname, './data/users.json')
-    return fs.readFileSync(filePath);
-
-}
+const url = require('url');
+const fs = require('fs');
+const getUsers = require('./modules/users');
 
 const server = http.createServer((request, response) =>{
     if (request.url === '/users') {
         response.status = 200;
         response.statusMessage = "ok";
         response.header = 'Content-Type: application/json';
-        response.write(getUser());
+        response.write(getUsers());
         response.end();
 
         return;
