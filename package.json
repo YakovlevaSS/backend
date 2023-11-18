@@ -1,0 +1,14 @@
+{
+  "name": "@skypro-web-developer/backend-02-template",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.js",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Sofia Iakovleva"
+}
