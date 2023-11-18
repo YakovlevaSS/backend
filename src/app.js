@@ -1,6 +1,23 @@
 const http = require('http')
+const fs = require('fs')
+const path = require('path')
+
+const getUser = () => {
+    const filePath = path.join(__dirname, './data/users.json')
+    return fs.readFileSync(filePath);
+
+}
 
 const server = http.createServer((request, response) =>{
+    if (request.url === '/users') {
+        response.status = 200;
+        response.statusMessage = "ok";
+        response.header = 'Content-Type: application/json';
+        response.write(getUser());
+        response.end();
+
+        return;
+    }
         // Написать обработчик запроса:
     // - Ответом на запрос `?hello=<name>` должна быть **строка** "Hello, <name>.", код ответа 200
     // - Если параметр `hello` указан, но не передано `<name>`, то ответ **строка** "Enter a name", код ответа 400
