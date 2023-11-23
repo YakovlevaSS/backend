@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const router = require('express').Router()
 
 const {
     getUsers,
@@ -10,10 +10,12 @@ const {
     returnBook
 } = require("../controllers/users");
 
-app.get('/users', getUsers);
-app.get('/users/:userID', getUserById);
-app.post('/users', createUser);
-app.put('/users/:userID', updateUser);
-app.delete('/users/:userID', deleteUser);
-app.post('/users/:userID/books/:bookID', takeBook);
-app.post('/users/:userID/books/:bookID', returnBook);
+router.get('/users', getUsers);
+router.get('/users/:userID', getUserById);
+router.post('/users', createUser);
+router.put('/users/:userID', updateUser);
+router.delete('/users/:userID', deleteUser);
+router.post('/users/:userID/books/:bookID', takeBook);
+router.post('/users/:userID/books/:bookID', returnBook);
+
+module.exports = router;

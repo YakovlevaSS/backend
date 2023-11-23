@@ -8,8 +8,10 @@ const {
   deleteBook,
 } = require("../controllers/books");
 
-app.get("/books", getBooks);
-app.get("/books/:bookID", getUBookById);
-app.post("/books", createBook);
-app.put("/books/:bookID", updateBook);
-app.delete("/books/:bookID", deleteBook);
+router.get("/books", getBooks);
+router.get("/books/:bookID", getUBookById);
+router.post("/books", createBook);
+router.put("/books/:bookID", updateBook);
+router.delete("/books/:bookID", deleteBook);
+
+module.exports = router;
