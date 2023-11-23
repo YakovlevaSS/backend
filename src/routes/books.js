@@ -11,7 +11,7 @@ const {
 router.get("/books", getBooks);
 router.get("/books/:bookID", getUBookById);
 router.post("/books", createBook);
-router.put("/books/:bookID", updateBook);
+router.patch("/books/:bookID", updateBook);
 router.delete("/books/:bookID", deleteBook);
 
 module.exports = router;

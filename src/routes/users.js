@@ -6,16 +6,16 @@ const {
     createUser,
     updateUser,
     deleteUser,
-    takeBook,
-    returnBook
+    // takeBook,
+    // returnBook
 } = require("../controllers/users");
 
 router.get('/users', getUsers);
 router.get('/users/:userID', getUserById);
 router.post('/users', createUser);
-router.put('/users/:userID', updateUser);
+router.patch('/users/:userID', updateUser);
 router.delete('/users/:userID', deleteUser);
-router.post('/users/:userID/books/:bookID', takeBook);
-router.post('/users/:userID/books/:bookID', returnBook);
+// router.post('/users/:userID/books/:bookID', takeBook);
+// router.post('/users/:userID/books/:bookID', returnBook);
 
 module.exports = router;
