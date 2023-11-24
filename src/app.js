@@ -6,15 +6,15 @@ const mongoose = require("mongoose");
 const userRouter = require("./routes/users");
 const booksRouter = require("./routes/books");
 
-const corsOption = require('./middleware/cors')
+const  logger = require('./middleware/cors')
 
 const app = express();
 dotenv.config();
 
-const { PORT = 3000, API_URL = "http://127.0.0.1", MONGO_URL = "mongodb://127.0.0.1:27017/backend"  } = process.env;
+const { PORT = 3005, API_URL = "http://127.0.0.1", MONGO_URL = "mongodb://127.0.0.1:27017/backend"  } = process.env;
 
 app.use(cors())
-app.use(corsOption);
+app.use(logger);
 
 mongoose
   .connect(MONGO_URL)
