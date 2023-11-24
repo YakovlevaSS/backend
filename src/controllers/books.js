@@ -29,7 +29,6 @@ const createBook = (req, res) => {
     })
     .catch((e) => {
       res.status(500).send(e.message);
-      res.status(404).send(e.message);
     });
 };
 
