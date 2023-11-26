@@ -15,6 +15,7 @@ const { PORT = 3005, API_URL = "http://127.0.0.1", MONGO_URL = "mongodb://127.0.
 
 app.use(cors())
 app.use(logger);
+app.use(bodyParser.json());
 
 mongoose
   .connect(MONGO_URL)
@@ -24,7 +25,7 @@ mongoose
 app.use(userRouter);
 app.use(booksRouter);
 
-app.use(bodyParser.json());
+
 
 app.listen(PORT, () => {
   console.log(`CORS-enabled, Ссылка на сервер: ${API_URL}:${PORT}`);
