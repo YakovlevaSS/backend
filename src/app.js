@@ -1,17 +1,32 @@
-const http = require('http')
+const express = require("express");
+const dotenv = require("dotenv");
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require("mongoose");
+const userRouter = require("./routes/users");
+const booksRouter = require("./routes/books");
 
-const server = http.createServer((request, response) =>{
-        // Написать обработчик запроса:
-    // - Ответом на запрос `?hello=<name>` должна быть **строка** "Hello, <name>.", код ответа 200
-    // - Если параметр `hello` указан, но не передано `<name>`, то ответ **строка** "Enter a name", код ответа 400
-    // - Ответом на запрос `?users` должен быть **JSON** с содержимым файла `data/users.json`, код ответа 200
-    // - Если никакие параметры не переданы, то ответ **строка** "Hello, World!", код ответа 200
-    // - Если переданы какие-либо другие параметры, то пустой ответ, код ответа 500
-// response.status = 200;
-// response.statusMessage = 
+const  logger = require('./middleware/cors')
+
+const app = express();
+dotenv.config();
+
+const { PORT = 3005, API_URL = "http://127.0.0.1", MONGO_URL = "mongodb://127.0.0.1:27017/backend"  } = process.env;
+
+app.use(cors())
+app.use(logger);
+app.use(bodyParser.json());
+
+mongoose
+  .connect(MONGO_URL)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("Failed to connect to MongoDB", err));
+
+app.use(userRouter);
+app.use(booksRouter);
+
+
+
+app.listen(PORT, () => {
+  console.log(`CORS-enabled, Ссылка на сервер: ${API_URL}:${PORT}`);
 });
-
-server.listen(3003, () => {
-    console.log("Сервер запущен по адресу http://127.0.0.1.3003");
-})
-
